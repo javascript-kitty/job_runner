@@ -1,4 +1,4 @@
-export interface PriorityQueue {
+export interface IJobRunner {
     insert(task: Task): void;
     run(): void;
   }
@@ -49,7 +49,6 @@ export interface PriorityQueue {
       let right = 2 * index + 2;
   
       let largest = index;
-  
       if (
         left < this.size &&
         this.items[left].priority > this.items[largest].priority
@@ -83,7 +82,7 @@ export interface PriorityQueue {
     }
   }
   
-  export class JobRunner implements PriorityQueue {
+  export class JobRunner implements IJobRunner {
     heap: Heap<Task>;
   
     constructor(heap: Heap<Task>) {
@@ -92,8 +91,16 @@ export interface PriorityQueue {
   
     run(): void {
       while (!this.heap.isEmpty) {
-        console.log(this.heap.extract());
+       
+
+      const interval = setInterval( ()=> {
+            console.log(this.heap.extract())
+         }, 100 )
+clearInterval(interval)
+
       }
+
+   
     }
   
     insert(task: Task) {

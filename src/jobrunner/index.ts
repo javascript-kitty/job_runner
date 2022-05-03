@@ -1,7 +1,7 @@
-import { Heap, JobRunner, PriorityQueue, Task } from "./JobRunner";
+import { Heap, JobRunner, IJobRunner, Task } from "./JobRunner";
 
-function queueJobs(jr:PriorityQueue) {
-  for (let i = 0; i < 10000; i++) {
+function queueJobs(jr:IJobRunner) {
+  for (let i = 0; i < 3; i++) {
 
     jr.insert({ job: `task ${i}`, priority: Math.random() });
   }
